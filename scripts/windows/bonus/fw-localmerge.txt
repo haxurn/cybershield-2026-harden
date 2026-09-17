@@ -1,0 +1,4 @@
+HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile|AllowLocalPolicyMerge|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile|AllowLocalIPsecPolicyMerge|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile|AllowLocalPolicyMerge|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile|AllowLocalIPsecPolicyMerge|D|1

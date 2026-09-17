@@ -1,0 +1,42 @@
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fSingleSessionPerUser|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fDisableCcm|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fDisableCdm|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fDisableLPT|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fDisablePNPRedir|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fPromptForPassword|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|fEncryptRPCTraffic|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|SecurityLayer|D|2
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|MinEncryptionLevel|D|3
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|MaxIdleTime|D|900000
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|MaxDisconnectionTime|D|60000
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|DeleteTempDirsOnExit|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|PerSessionTempDir|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services|DisablePasswordSaving|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds|DisableEnclosureDownload|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection|EnableNetworkProtection|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine|EnableFileHashComputation|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection|DisableIOAVProtection|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection|DisableBehaviorMonitoring|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection|DisableScriptScanning|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Scan|DisableRemovableDriveScanning|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Scan|DisableEmailScanning|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender|PUAProtection|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\System|EnableSmartScreen|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\System|ShellSmartScreenLevel|S|Block
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application|MaxSize|D|32768
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security|MaxSize|D|196608
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup|MaxSize|D|32768
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\System|MaxSize|D|32768
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard|EnableVirtualizationBasedSecurity|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard|RequirePlatformSecurityFeatures|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard|HypervisorEnforcedCodeIntegrity|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard|HVCIMATRequired|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard|LsaCfgFlags|D|1
+HKLM:\SYSTEM\CurrentControlSet\Control\Lsa|RunAsPPL|D|1
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|LocalAccountTokenFilterPolicy|D|0
+HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|CachedLogonsCount|S|4
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|ShutdownWithoutLogon|D|0
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|NoConnectedUser|D|3
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|ConsentPromptBehaviorAdmin|D|2
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|legalnoticecaption|S|Authorized Access Only
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System|legalnoticetext|S|This system is for authorized users only. Activity is monitored and logged.

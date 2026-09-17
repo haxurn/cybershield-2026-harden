@@ -1,0 +1,38 @@
+HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters|DisableIPSourceRouting|D|2
+HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters|DisableIPSourceRouting|D|2
+HKLM:\SYSTEM\CurrentControlSet\Services\Netbt\Parameters|NoNameReleaseOnDemand|D|1
+HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager|SafeDllSearchMode|D|1
+HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|ScreenSaverGracePeriod|S|5
+HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters|TcpMaxDataRetransmissions|D|3
+HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters|TcpMaxDataRetransmissions|D|3
+HKLM:\SYSTEM\CurrentControlSet\Services\Eventlog\Security|WarningLevel|D|90
+HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters|KeepAliveTime|D|300000
+HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\kernel|DisableExceptionChainValidation|D|0
+HKLM:\SYSTEM\CurrentControlSet\Services\NetBT\Parameters|NodeType|D|2
+HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient|EnableMulticast|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\System|EnableFontProviders|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation|AllowInsecureGuestAuth|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Peernet|Disabled|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Network Connections|NC_AllowNetBridge_NLA|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Network Connections|NC_ShowSharedAccessUI|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Network Connections|NC_StdDomainUserSetLocation|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy|fMinimizeConnections|D|3
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy|fBlockNonDomain|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\WCN\UI|DisableWcnUi|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization|NoLockScreenCamera|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization|NoLockScreenSlideshow|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\InputPersonalization|AllowInputPersonalization|D|0
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer|AllowOnlineTips|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\System|EnableCdp|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\System|AllowCrossDeviceClipboard|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo|DisabledByGroupPolicy|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer|NoAutoplayfornonVolume|D|1
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer|NoAutorun|D|1
+HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer|NoDriveTypeAutoRun|D|255
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent|DisableWindowsConsumerFeatures|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredUI|DisablePasswordReveal|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection|DoNotShowFeedbackNotifications|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors|DisableLocation|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive|DisableFileSyncNGSC|D|1
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search|AllowCloudSearch|D|0
+HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search|AllowIndexingEncryptedStoresOrItems|D|0
