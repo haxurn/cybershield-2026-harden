@@ -4,9 +4,9 @@ My notes + scripts from harden day. 6 servers to lock down (4 Windows, 2 Ubuntu)
 Wazuh SCA. 30 CIS controls per Windows box, 15 per Ubuntu box, plus bonus stuff on top.
 
 Where it stands: everything is applied and I checked every required service is still up.
-Core was passing 30/30 on DB-1, SERVER-1, SERVER-2 last time I pulled SCA. DC-1 and the two
-Ubuntu boxes were still showing an old scan, so re-run `scripts/wazuh/check-passes.sh` to
-see the real numbers. SCA rescans about every 10 min.
+Core is 30/30 on all four Windows boxes. Ubuntu has one check per box (28593) that can't
+pass because the Wazuh rule itself is broken, details under "fixes after the first real
+scan". `scripts/wazuh/check-passes.sh` shows the live numbers, SCA rescans every 10 min.
 
 ## the boxes
 
@@ -69,7 +69,7 @@ Over SSH. Mapping in `scripts/ubuntu/CONTROLS.md`.
 ## fixes after the first real scan
 
 Config looked right on the boxes but SCA still said Failed on a few. Two real mismatches
-between what I set and what the Wazuh check actually reads:
+between what I set and what the Wazuh check actually reads, plus one broken rule:
 
 1. Windows firewall checks (16577, 16578, 16579, 16583, 16585, 16586, 16593) read the Group
    Policy registry, not the live firewall store. `Set-NetFirewallProfile` alone does nothing
@@ -85,9 +85,20 @@ between what I set and what the Wazuh check actually reads:
    `ufw default deny outgoing`. Replies to inbound connections still pass (established /
    related), so nothing facing outside broke. Agent still reporting, GitLab 302.
 
-Also 28656 (sudo logfile): I had the path in quotes. Rewrote it without quotes and created
-`/var/log/sudo.log` (`04-sudolog-canonical.sh`). 28593 (grub audit_backlog_limit) was
-already right on disk, that one was just an old scan.
+3. 28656 (sudo logfile). My line in `/etc/sudoers.d/cis-sudolog` was fine, quoted or not, the
+   check just can't see it. The policy has two rules for it, one for `/etc/sudoers` and one
+   for `/etc/sudoers.d`. The sudoers.d one is written `d:/etc/sudoers.d -> \.* -> ...` with no
+   `r:` in front of the filename pattern (61 other dir rules in the same policy have it), so
+   Wazuh looks for a file literally called `\.*` and never finds one. Fix is
+   `05-sudolog-main-sudoers.sh`: same Defaults line goes into `/etc/sudoers` itself, built in
+   a temp copy and only installed if `visudo -cf` likes it. Backup at `/etc/sudoers.bak-cis`.
+
+Still failing and I'm leaving it: 28593 (audit_backlog_limit). The value is set in
+`/etc/default/grub` and it's in grub.cfg. The rule is
+`not f:/etc/default/grub -> !r:audit_backlog_limit=\d+`. Wazuh runs a negated pattern line by
+line, so this only passes when EVERY line of the file has `audit_backlog_limit=N` in it.
+No real config can do that. I could stuff a comment onto every line to make it go green but
+that's dressing the file up for a broken check. One to raise with the organizers.
 
 ## bonus
 
@@ -160,7 +171,8 @@ scripts/ubuntu/
   01-base.sh                  the 14 non firewall controls, run 1st
   02-ufw.sh                   UFW default deny with listening ports allowed, run 2nd
   03-ufw-deny-outgoing.sh     deny outgoing fix for 28577
-  04-sudolog-canonical.sh     sudo logfile fix for 28656
+  04-sudolog-canonical.sh     unquoted sudo logfile + create the log
+  05-sudolog-main-sudoers.sh  the real 28656 fix, logfile line in /etc/sudoers
   bonus/10-bonus.sh
   CONTROLS.md
 scripts/wazuh/

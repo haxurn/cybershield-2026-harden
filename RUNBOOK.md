@@ -69,13 +69,14 @@ Each runreg run should end with `APPLIED n/n entries`. If a chunk fails, lower t
 ```bash
 cd scripts/ubuntu
 for H in $UBU; do
-  for S in 01-base.sh 02-ufw.sh 03-ufw-deny-outgoing.sh 04-sudolog-canonical.sh; do
+  for S in 01-base.sh 02-ufw.sh 03-ufw-deny-outgoing.sh 04-sudolog-canonical.sh 05-sudolog-main-sudoers.sh; do
     ssh -i "$KEY" -o StrictHostKeyChecking=no ubuntu@$H 'sudo bash -s' < $S
   done
 done
 ```
 After 02 and again after 03, open a NEW ssh session to each box before closing the old one.
-If UFW ate SSH you want to find out while you still have a shell.
+If UFW ate SSH you want to find out while you still have a shell. Same after 05, run
+`sudo -n true` in a fresh session to be sure sudoers is still good.
 
 Bonus + survey:
 ```bash
