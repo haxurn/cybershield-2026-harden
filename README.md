@@ -4,9 +4,9 @@ My notes + scripts from harden day. 6 servers to lock down (4 Windows, 2 Ubuntu)
 Wazuh SCA. 30 CIS controls per Windows box, 15 per Ubuntu box, plus bonus stuff on top.
 
 Where it stands: everything is applied and I checked every required service is still up.
-Core is 30/30 on all four Windows boxes. Ubuntu has one check per box (28593) that can't
-pass because the Wazuh rule itself is broken, details under "fixes after the first real
-scan". `scripts/wazuh/check-passes.sh` shows the live numbers, SCA rescans every 10 min.
+Core is 30/30 on all four Windows boxes. The last Ubuntu fails came from two oddly written
+Wazuh rules, see "fixes after the first real scan".
+`scripts/wazuh/check-passes.sh` shows the live numbers, SCA rescans every 10 min.
 
 ## the boxes
 
@@ -69,7 +69,8 @@ Over SSH. Mapping in `scripts/ubuntu/CONTROLS.md`.
 ## fixes after the first real scan
 
 Config looked right on the boxes but SCA still said Failed on a few. Two real mismatches
-between what I set and what the Wazuh check actually reads, plus one broken rule:
+between what I set and what the Wazuh check actually reads, then two rules that are
+written in a way normal config can't satisfy:
 
 1. Windows firewall checks (16577, 16578, 16579, 16583, 16585, 16586, 16593) read the Group
    Policy registry, not the live firewall store. `Set-NetFirewallProfile` alone does nothing
@@ -93,12 +94,15 @@ between what I set and what the Wazuh check actually reads, plus one broken rule
    `05-sudolog-main-sudoers.sh`: same Defaults line goes into `/etc/sudoers` itself, built in
    a temp copy and only installed if `visudo -cf` likes it. Backup at `/etc/sudoers.bak-cis`.
 
-Still failing and I'm leaving it: 28593 (audit_backlog_limit). The value is set in
-`/etc/default/grub` and it's in grub.cfg. The rule is
-`not f:/etc/default/grub -> !r:audit_backlog_limit=\d+`. Wazuh runs a negated pattern line by
-line, so this only passes when EVERY line of the file has `audit_backlog_limit=N` in it.
-No real config can do that. I could stuff a comment onto every line to make it go green but
-that's dressing the file up for a broken check. One to raise with the organizers.
+4. 28593 (audit_backlog_limit). Value was set in `/etc/default/grub` and present in grub.cfg
+   the whole time. The rule is `not f:/etc/default/grub -> !r:audit_backlog_limit=\d+`. Wazuh
+   tests a negated pattern line by line, so any line in that file WITHOUT
+   `audit_backlog_limit=N` fails the check. Comments, GRUB_TIMEOUT, everything.
+   `06-grub-backlog-layout.sh` leaves only the GRUB_CMDLINE_LINUX line in `/etc/default/grub`
+   and moves the rest of the defaults to `/etc/default/grub.d/00-defaults.cfg`. grub-mkconfig
+   sources both so nothing changes for real. The script proves it: it dumps the GRUB_ vars
+   and the generated config before and after, and rolls back if they differ. Real grub.cfg is
+   never touched, no update-grub. Backup at `/etc/default/grub.bak-cis`.
 
 ## bonus
 
@@ -173,6 +177,7 @@ scripts/ubuntu/
   03-ufw-deny-outgoing.sh     deny outgoing fix for 28577
   04-sudolog-canonical.sh     unquoted sudo logfile + create the log
   05-sudolog-main-sudoers.sh  the real 28656 fix, logfile line in /etc/sudoers
+  06-grub-backlog-layout.sh   28593 fix, /etc/default/grub keeps only the cmdline line
   bonus/10-bonus.sh
   CONTROLS.md
 scripts/wazuh/
